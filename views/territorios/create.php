@@ -62,23 +62,23 @@
                                 <input type="text" class="form-control" id="nombreFinca" required>
                             </div>
                             <div class="mb-3">
-                                <label for="areaPrivada" class="form-label">Area construida en m2</label>
+                                <label for="areaConstruidam2" class="form-label">Area construida en m2</label>
                                 <input type="number" class="form-control" id="areaConstruida" required>
                             </div>
                             <div class="mb-3">
-                                <label for="areaPrivada" class="form-label">Dirección</label>
+                                <label for="Direccion" class="form-label">Dirección</label>
                                 <input type="text" class="form-control" id="direccion" required>
                             </div>
                             <div class="mb-3">
-                                <label for="areaPrivada" class="form-label">Clima</label>
+                                <label for="Clima" class="form-label">Clima</label>
                                 <input type="text" class="form-control" id="direccion" required>
                             </div>
                             <div class="mb-3">
-                                <label for="areaPrivada" class="form-label">Servicios</label>
+                                <label for="Servicios" class="form-label">Servicios</label>
                                 <input type="text" class="form-control" id="direccion" required>
                             </div>
                             <div class="mb-3">
-                                <label for="areaPrivada" class="form-label">Precio de arrendamiento por hectarea</label>
+                                <label for="arrendamientoHectarea" class="form-label">Precio de arrendamiento por hectarea</label>
                                 <input type="text" class="form-control" id="direccion" required>
                             </div>
                             <div class="mb-3">
@@ -89,28 +89,28 @@
                     <div class="col-6">
                         <form>
                             <div class="mb-3">
-                                <label for="areaConstruida" class="form-label">Medidas en m2</label>
+                                <label for="medidasm2" class="form-label">Medidas en m2</label>
                                 <input type="number" class="form-control" id="medidas" required>
                             </div>
                             <div class="mb-3">
-                                <label for="areaConstruida" class="form-label">Área privada en m2</label>
+                                <label for="areaPrivadam2" class="form-label">Área privada en m2</label>
                                 <input type="number" class="form-control" id="areaPrivada" required>
                             </div>
                             <div class="mb-3">
-                                <label for="areaPrivada" class="form-label">Departamento</label>
-                                <input type="text" class="form-control" id="departamento" required>
+                                <label for="Departamento" class="form-label">Departamento</label>
+                                <input type="number" class="form-control" id="departamento" required>
                             </div>
                             <div class="mb-3">
-                                <label for="areaPrivada" class="form-label">Vias</label>
-                                <input type="text" class="form-control" id="departamento" required>
+                                <label for="Vias" class="form-label">Vias</label>
+                                <input type="number" class="form-control" id="departamento" required>
                             </div>
                             <div class="mb-3">
-                                <label for="areaPrivada" class="form-label">Altitud en m</label>
-                                <input type="text" class="form-control" id="departamento" required>
+                                <label for="Altitud" class="form-label">Altitud en m</label>
+                                <input type="number" class="form-control" id="departamento" required>
                             </div>
                             <div class="mb-3">
-                                <label for="areaPrivada" class="form-label">Precio arrendamiento de la propiedad</label>
-                                <input type="text" class="form-control" id="departamento" required>
+                                <label for="precioArrendamiento" class="form-label">Precio arrendamiento de la propiedad</label>
+                                <input type="number" class="form-control" id="departamento" required>
                             </div>
                         </form>
                     </div>
