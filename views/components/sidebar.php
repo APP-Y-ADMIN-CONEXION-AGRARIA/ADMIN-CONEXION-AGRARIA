@@ -33,25 +33,20 @@
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-user me-1"></i>
-                        <span>My Account</span>
+                        <span>Mi perfil</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-settings me-1"></i>
-                        <span>Settings</span>
+                        <span>Ajustes</span>
                     </a>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-lock me-1"></i>
-                        <span>Lock Screen</span>
-                    </a>
-
+            
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-log-out me-1"></i>
-                        <span>Logout</span>
+                        <span>Salir</span>
                     </a>
 
                 </div>
@@ -79,24 +74,7 @@
                     <span class="menu-text"> Usuarios </span>
                     <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="menuusuarios">
-                    <ul class="sub-menu">
-                        <li class="menu-item">
-                            <a href="?c=admins&m=index" class="menu-link">
-                                <span class="menu-text">Administradores</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="collapse" id="menuusuarios">
-                    <ul class="sub-menu">
-                        <li class="menu-item">
-                            <a href="?c=companies&m=index" class="menu-link">
-                                <span class="menu-text">Compañias</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            
                 <div class="collapse" id="menuusuarios">
                     <ul class="sub-menu">
                         <li class="menu-item">
