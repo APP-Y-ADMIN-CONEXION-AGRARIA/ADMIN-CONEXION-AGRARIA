@@ -25,14 +25,6 @@
                         </div>
 
                         <ul class="topbar-menu d-flex align-items-center">
-                            <!-- Topbar Search Form -->
-                            <li class="app-search dropdown me-3 d-none d-lg-block">
-                                <form>
-                                    <input type="search" class="form-control rounded-pill" placeholder="Buscar..." id="top-search">
-                                    <span class="fe-search search-icon font-16"></span>
-                                </form>
-                            </li>
-
                             <!-- Fullscreen Button -->
                             <li class="d-none d-md-inline-block">
                                 <a class="nav-link waves-effect waves-light" href="" data-toggle="fullscreen">
