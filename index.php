@@ -1,8 +1,8 @@
 <?php 
-$controller = isset($_GET['c']) ?  $_GET['c'] : 'Dashboard';
+$controller = isset($_GET['c']) ?  $_GET['c'] : 'Login';
 $controller= $controller.'Controller';
 
-$method = isset($_GET['m']) ? $_GET['m'] : 'dashboard';
+$method = isset($_GET['m']) ? $_GET['m'] : 'login';
 require_once('./controllers/'.$controller.'.php');
 $obj= new $controller();
 $obj->$method();
