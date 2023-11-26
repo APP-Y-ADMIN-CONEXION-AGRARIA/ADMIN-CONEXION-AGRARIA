@@ -40,20 +40,6 @@
                                 </a>
                             </li>
 
-                            <!-- Search Dropdown (for Mobile/Tablet) -->
-                            <li class="dropdown d-lg-none">
-                                <a class="nav-link dropdown-toggle waves-effect waves-light arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <i class="ri-search-line font-22"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-                                    <form class="p-3">
-                                        <input type="search" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                                    </form>
-                                </div>
-                            </li>
-
-                            <!-- Notofication dropdown -->
-
                             <!-- Light/Dark Mode Toggle Button -->
                             <li class="d-none d-sm-inline-block">
                                 <div class="nav-link waves-effect waves-light" id="light-dark-mode">
@@ -72,44 +58,30 @@
                                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
                                     <!-- item-->
                                     <div class="dropdown-header noti-title">
-                                        <h6 class="text-overflow m-0">Welcome !</h6>
+                                        <h6 class="text-overflow m-0">Bienvenido Diego!</h6>
                                     </div>
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <i class="fe-user"></i>
-                                        <span>My Account</span>
+                                        <span>Mi perfil</span>
                                     </a>
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <i class="fe-settings"></i>
-                                        <span>Settings</span>
+                                        <span>Ajustes</span>
                                     </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="fe-lock"></i>
-                                        <span>Lock Screen</span>
-                                    </a>
-
-                                    <div class="dropdown-divider"></div>
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <i class="fe-log-out"></i>
-                                        <span>Logout</span>
+                                        <span>Salir</span>
                                     </a>
 
                                 </div>
                             </li>
 
-                            <!-- Right Bar offcanvas button (Theme Customization Panel) -->
-                            <li>
-                                <a class="nav-link waves-effect waves-light" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
-                                    <i class="fe-settings font-22"></i>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
