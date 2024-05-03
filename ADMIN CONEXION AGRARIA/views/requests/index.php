@@ -32,7 +32,7 @@
             <div class="container">
                 <!--Container table-->
                 <div class="table-responsive tableApp">
-                    <table class="table table-dark table-striped table-hover">
+                    <table class="table table-striped table-hover">
                         <thead>
                             <tr class="text-center">
                                 <th>ID</th>

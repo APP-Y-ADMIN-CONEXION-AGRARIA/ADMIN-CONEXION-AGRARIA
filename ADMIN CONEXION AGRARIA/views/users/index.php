@@ -5,14 +5,6 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Inicio ></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=""> Usuarios</a>
-                </li>
-            </ul>
             <!--btn add-->
             <form class="d-flex">
                 <button class="btn btn-outline-success" type="button" onclick="createUser();">Crear</button>
@@ -30,7 +22,7 @@
             <div class="container">
                 <!--Container table-->
                 <div class="table-responsive tableApp">
-                    <table class="table table-dark table-striped table-hover">
+                    <table class="table table-striped table-hover">
                         <thead>
                             <tr class="text-center">
                                 <th>ID</th>
@@ -92,6 +84,12 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="correo" placeholder="Correo" required>
                         <label for="img">CORREO</label>
+                    </div>
+                    <!-- Campo para los IDs de los usuarios -->
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="predios" placeholder="Predios del Usuario" required>
+                        <label for="predios">Predios del usuario</label>
+                        <small class="form-text text-muted">Separar los IDs con comas (,)</small>
                     </div>
                 </form>
                 <!-- End Form -->

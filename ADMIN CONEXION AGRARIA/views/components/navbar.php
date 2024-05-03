@@ -17,10 +17,6 @@
                                 </a>
                             </div>
 
-                            <!-- Sidebar Menu Toggle Button -->
-                            <button class="button-toggle-menu">
-                                <i class="mdi mdi-menu"></i>
-                            </button>
 
                         </div>
 
@@ -32,47 +28,6 @@
                                 </a>
                             </li>
 
-                            <!-- Light/Dark Mode Toggle Button -->
-                            <li class="d-none d-sm-inline-block">
-                                <div class="nav-link waves-effect waves-light" id="light-dark-mode">
-                                    <i class="ri-moon-line font-22"></i>
-                                </div>
-                            </li>
-
-                            <!-- User Dropdown -->
-                            <li class="dropdown">
-                                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <img src="./assets/images/Diego.jpg" alt="user-image" class="rounded-circle">
-                                    <span class="ms-1 d-none d-md-inline-block">
-                                        Diego Forero <i class="mdi mdi-chevron-down"></i>
-                                    </span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
-                                    <!-- item-->
-                                    <div class="dropdown-header noti-title">
-                                        <h6 class="text-overflow m-0">Bienvenido Diego!</h6>
-                                    </div>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="fe-user"></i>
-                                        <span>Mi perfil</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="fe-settings"></i>
-                                        <span>Ajustes</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="fe-log-out"></i>
-                                        <span>Salir</span>
-                                    </a>
-
-                                </div>
-                            </li>
 
                         </ul>
                     </div>

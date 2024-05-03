@@ -110,7 +110,7 @@ if (objFormLogin) {
         const userCredentials = await signInWithEmailAndPassword(auth, user, pass);
         console.log(userCredentials.user);
         // Redirige a la página deseada
-        window.location.href = "?c=Dashboard&m=dashboard";
+        window.location.href = "?c=users&m=index";
       } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;

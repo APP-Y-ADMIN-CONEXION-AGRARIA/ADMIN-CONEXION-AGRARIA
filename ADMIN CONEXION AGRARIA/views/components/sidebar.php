@@ -46,14 +46,6 @@
 
             <li class="menu-title mt-3">Panel de Administracion</li>
 
-            <li class="menu-item">
-                <a href="?c=dashboard&m=dashboard" class="menu-link colorletra">
-                    <span class="menu-icon"><i data-feather="monitor"></i></span>
-                    <span class="menu-text dashboard"> Escritorio </span>
-                </a>
-            </li>
-            <!--- End of Desktop -->
-
             <!--- Usuarios Menu -->
             <li class="menu-item usuarios">
                 <a href="#menuusuarios" data-bs-toggle="collapse" class="menu-link  colorletra">

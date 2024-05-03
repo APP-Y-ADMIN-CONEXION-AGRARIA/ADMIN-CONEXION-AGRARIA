@@ -126,6 +126,28 @@ function setDataForm(data) {
     }
 };
 
+formProperties.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let inputId = document.getElementById('id');
+    if (inputId.value.length === 0) {
+        inputId.value = uuid.v1();
+    }
+    let elements = formProperties.querySelectorAll('input');
+    var formData = {};
+    for (const elem of elements) {
+        formData[elem.id] = elem.value;
+    }
+    // Convertir los IDs de predios de cadena a array de enteros
+    if (formData.predios) {
+        formData.predios = formData.predios.split(',').map(id => parseInt(id.trim()));
+    }
+    if (validate) {
+        firebaseGame.setCreateUser(formData).then(hideModal());
+    } else {
+        firebaseGame.setUpdateUser(getIdUser, formData).then(hideModal());
+    }
+});
+
 /* Load HTML view */
 window.addEventListener('load', (e) => {
     getDataUser();
