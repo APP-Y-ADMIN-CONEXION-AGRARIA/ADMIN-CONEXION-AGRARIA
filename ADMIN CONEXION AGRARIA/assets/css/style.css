@@ -1,0 +1,118 @@
+.app-menu{
+    background: #fafafa!important;
+}
+
+.btn-info,
+.btn-dark{
+    background-color: #64dd17!important;
+    color: white!important;
+    border-color: #64dd17!important;
+}
+.swal2-modal .swal2-confirm {
+    background: #64dd17!important;
+}
+
+.text-primary {
+    color: #64dd17!important;
+}
+
+tbody{
+    text-align: center;
+}
+
+.contenido{
+    padding-top: 20px!important;
+}
+
+.productos,
+.compañias{
+    width: 137px;
+}
+
+.logo{
+    height: 35px!important;
+    margin-top: 20px!important;
+}
+
+.logoPequeño{
+    width: 50px!important;
+    height: 35px!important;  
+}
+
+html[data-sidenav-size=condensed]:not([data-layout=horizontal]) .app-menu .logo-box {
+    background: #fafafa!important;
+}
+
+li,
+a{
+    color: black!important;
+}
+
+.icono{
+    width: 93px!important;
+    height: 79px!important;
+    margin-left: 56px;
+    opacity: 0.5;
+}
+
+.carousel-item img{
+    margin-left: 0!important;
+}
+
+.card-index{
+    margin-bottom: 15px!important;
+}
+
+.card-show,
+.card-edit,
+.card-create{
+    margin-bottom: 83px!important;
+}
+
+.titulo-descripcion{
+    margin-left: 33px!important;
+}
+
+.nombrePropiedad,
+.propietario{
+    margin-left: 79px;
+}
+
+.descripcion{
+    margin-left: 33px;
+    text-align: justify;
+}
+
+.accordion-header{
+    margin-top: 0!important;
+}
+
+iframe{
+    margin-left: 195px;
+}
+
+.active>.page-link, .page-link.active {
+    background-color: greenyellow!important;
+}
+
+.buscar{
+    width: 24%!important;
+    float: right;
+    border-radius: 10px;
+}
+
+html[data-menu-color=brand] {
+    --ct-menu-bg: greenyellow!important;
+}
+
+.block{
+    width: 300px!important;
+    margin-left: 151px!important;
+    cursor: pointer;
+}
+
+.amazon{
+    width: 237px!important;
+    margin-left: 83px!important;
+    cursor: pointer;
+}
