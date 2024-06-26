@@ -207,3 +207,14 @@ html[data-menu-color="brand"] {
 #tbodyModal{
     text-align: left!important;
 }
+
+.selected-owner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}

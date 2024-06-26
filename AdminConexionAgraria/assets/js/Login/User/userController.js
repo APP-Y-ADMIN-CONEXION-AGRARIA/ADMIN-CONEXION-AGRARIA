@@ -101,8 +101,6 @@ if (objFormLogin) {
           pass
         ).then(async (userCredential) => {
           console.log(userCredential.user);
-          alert("user login");
-          window.location.href= "?c=users&m=index";
 
           // Obtener el token de Firebase
           const tokenResponse = await fetch(
@@ -127,7 +125,7 @@ if (objFormLogin) {
           // Aquí puedes almacenar el token de Firebase en localStorage
           localStorage.setItem("firebaseToken", firebaseToken);
 
-          // Continuar con cualquier otra lógica después de obtener el token de Firebase
+          window.location.href= "?c=users&m=index";
         });
       } catch (error) {
         const errorCode = error.code;

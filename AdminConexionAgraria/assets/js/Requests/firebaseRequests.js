@@ -11,7 +11,6 @@ var validate = true;
 /** Function get user data */
 function getDataUser() {
     firebaseGame.getDataUsers().then((result) => {
-        hidePreload();
     });
 }
 
@@ -24,7 +23,6 @@ function showUser(id) {
     dataUser.then((data) => {
         if (data) {
             setDataForm(data);
-            hidePreload(); // Aquí puedes llamar a hidePreload si es necesario
         }
     });
     btnSubmit.disabled = true;

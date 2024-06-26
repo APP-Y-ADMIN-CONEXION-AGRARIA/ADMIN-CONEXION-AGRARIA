@@ -20,6 +20,12 @@ class firebaseUsers {
   }
 
   async getDataUsers() {
+    const firebaseToken = localStorage.getItem("firebaseToken");
+    if (!firebaseToken) {
+      alert("No estas autorizado. Por favor, inicia sesión.");
+      window.location.href = "?c=login&m=login";
+    }
+
     return this.fetchWithToken(this.URL + ".json")
       .then((res) => {
         if (!res.ok) {

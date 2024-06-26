@@ -5,19 +5,6 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Inicio ></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=""> Solicitudes</a>
-                </li>
-            </ul>
-            <!--btn add-->
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
         </div>
     </div>
 </nav>
@@ -38,7 +25,7 @@
                                 <th>NOMBRE</th>
                                 <th>CORREO</th>
                                 <th>TELEFONO</th>
-                                <th width="260">ACTIONS</th>
+                                <th width="260">OPCIONES</th>
                             </tr>
                         </thead>
                         <tbody id="tbody">
@@ -50,7 +37,7 @@
                                 <th>NOMBRE</th>
                                 <th>CORREO</th>
                                 <th>TELEFONO</th>
-                                <th width="260">ACTIONS</th>
+                                <th width="260">OPCIONES</th>
                             </tr>
                         </tfoot>
 
@@ -96,7 +83,7 @@
                 <!-- End Form -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="submit" id="btnSubmit" form="formRequest" class="btn btn-primary d-none">Save
                     changes</button>
             </div>

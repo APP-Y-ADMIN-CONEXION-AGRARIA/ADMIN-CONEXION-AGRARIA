@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!--btn add-->
             <form class="d-flex">
-                <button class="btn btn-outline-success" type="button" onclick="createUser();">Crear</button>
+                <button class="btn btn-outline-success" type="button" onclick="createUser();">Crear un nuevo usuario</button>
             </form>
         </div>
     </div>
@@ -30,7 +30,7 @@
                                 <th>No DOCUMENTO</th>
                                 <th>TELEFONO</th>
                                 <th>CORREO</th>
-                                <th width="260">ACTIONS</th>
+                                <th width="260">OPCIONES</th>
                             </tr>
                         </thead>
                         <tbody id="tbody">
@@ -43,7 +43,7 @@
                                 <th>No DOCUMENTO</th>
                                 <th>TELEFONO</th>
                                 <th>CORREO</th>
-                                <th width="260">ACTIONS</th>
+                                <th width="260">OPCIONES</th>
                             </tr>
                         </tfoot>
 
@@ -100,10 +100,8 @@
 
 <!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-    integrity="sha384-BAP6MR6AuMTqq3iAq5E51Dw2spHtzeXJK3xvZxMBYbBkzRJb/sHf5BiJqJfZQ+8V"
     crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 <!--Script RFC4122-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>

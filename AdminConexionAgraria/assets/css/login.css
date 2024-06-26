@@ -100,5 +100,4 @@ h6 {
 .form-floating>.form-control:focus, .form-floating>.form-control:not(:placeholder-shown) {
   padding-top: 0.625rem!important;
   padding-bottom: .625rem!important;
-  color: white!important;
 }

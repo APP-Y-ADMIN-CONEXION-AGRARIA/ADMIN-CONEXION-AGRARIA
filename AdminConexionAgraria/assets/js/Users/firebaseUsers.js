@@ -11,7 +11,6 @@ var validate = true;
 /** Function get user data */
 function getDataUser() {
     firebaseGame.getDataUsers().then(() => {
-        hidePreload();
     });
 }
 

@@ -10,8 +10,8 @@ class firebaseSolicitud {
         try {
             const firebaseToken = localStorage.getItem('firebaseToken');
             if (!firebaseToken) {
-                console.log('No hay token de Firebase. Por favor, inicia sesión.');
-                return;
+                alert('No estas autorizado. Por favor, inicia sesión.');
+                window.location.href= '?c=login&m=login';
             }
 
             const response = await fetch(this.URL + ".json", {
@@ -35,7 +35,7 @@ class firebaseSolicitud {
         try {
             const firebaseToken = localStorage.getItem('firebaseToken');
             if (!firebaseToken) {
-                console.log('No hay token de Firebase. Por favor, inicia sesión.');
+                alert('No tienes autorización. Por favor, inicia sesión.');
                 return;
             }
 

@@ -9,14 +9,6 @@
             <img src="./assets/images/icono2.png"
                 alt="small logo" class="logo-sm logoPequeño">
         </a>
-
-        <!-- Brand Logo Dark -->
-        <a href="index.html" class="logo-dark">
-            <img src="./assets/images/icono.png logo"
-                alt="dark logo" class="logo-lg">
-            <img src="./assets/images/icono2.png"
-                alt="small logo" class="logo-sm logoPequeño">
-        </a>
     </div>
 
     <!-- menu-left -->
@@ -24,7 +16,6 @@
 
         <!-- User box -->
         <div class="user-box text-center">
-            <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md">
             <div class="dropdown">
                 <a href="javascript: void(0);" class="dropdown-toggle h5 mb-1 d-block" data-bs-toggle="dropdown">Geneva
                     Kennedy</a>
