@@ -7,7 +7,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!--btn add-->
             <form class="d-flex">
-                <button class="btn btn-outline-success" type="button" onclick="createUser();">Crear un nuevo usuario</button>
+                <button class="btn btn-outline-success" type="button" onclick="createUser();">Crear un nuevo
+                    usuario</button>
             </form>
         </div>
     </div>
@@ -70,19 +71,20 @@
                 <form id="formUsers">
                     <input type="hidden" class="form-control" id="id" value>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre">
                         <label for="nombre">NOMBRE</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="numero_documento" placeholder="No. Documento" required>
+                        <input type="text" class="form-control" id="numero_documento" placeholder="No. Documento"
+                            pattern="\d*">
                         <label for="direccion">NO. DOCUMENTO</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="telefono" placeholder="Telefono" required>
+                        <input type="text" class="form-control" id="telefono" placeholder="Telefono" pattern="\d*">
                         <label for="medida">TELEFONO</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="correo" placeholder="Correo" required>
+                        <input type="text" class="form-control" id="correo" placeholder="Correo">
                         <label for="img">CORREO</label>
                     </div>
                 </form>
@@ -96,7 +98,6 @@
         </div>
     </div>
 </div>
-<!--Container modal-->
 
 <!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -109,3 +110,14 @@
 <script src="./assets/js/Users/mainUsers.js"></script>
 <!--Script my script-->
 <script src="./assets/js/Users/firebaseUsers.js"></script>
+
+<script>
+    document.getElementById('numero_documento').addEventListener('input', function (e) {
+        this.value = this.value.replace(/\D/g, '');
+    });
+
+    document.getElementById('telefono').addEventListener('input', function (e) {
+        this.value = this.value.replace(/\D/g, '');
+    });
+
+</script>

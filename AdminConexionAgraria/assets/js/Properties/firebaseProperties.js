@@ -1,7 +1,7 @@
 /** DEFINE */
 const tbodyId = "tbody";
 const firebaseGame = new firebaseTerrenos(tbodyId);
-const textConfirm = "Press a button to Delete!\nAccept or Cancel.";
+const textConfirm = "¿Estas seguro de esto? No podras deshacer esta acción";
 const myModal = new bootstrap.Modal(document.getElementById("modalApp"), {});
 const firebaseURLDepartments = "https://conexion-agraria-default-rtdb.firebaseio.com/Api/Department.json";
 let validate = true;

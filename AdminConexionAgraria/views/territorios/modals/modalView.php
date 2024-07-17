@@ -19,6 +19,14 @@
                             <input type="text" class="form-control" id="direccionView">
                         </div>
                         <div class="mb-3">
+                            <label for="latitudView" class="form-label">Latitud</label>
+                            <input type="text" class="form-control" id="latitudView">
+                        </div>
+                        <div class="mb-3">
+                            <label for="longitudView" class="form-label">Longitud</label>
+                            <input type="text" class="form-control" id="longitudView">
+                        </div>
+                        <div class="mb-3">
                             <label for="descripcionView" class="form-label">Descripción</label>
                             <input type="text" class="form-control" id="descripcionView">
                         </div>
@@ -29,6 +37,14 @@
                         <div class="mb-3">
                             <label for="climaView" class="form-label">Clima</label>
                             <input type="text" class="form-control" id="climaView">
+                        </div>
+                        <div class="mb-3">
+                            <label for="precioArrendamiento" class="form-label">Precio de arrendamiento</label>
+                            <input type="text" class="form-control" id="precioArrendamientoView">
+                        </div>
+                        <div class="mb-3">
+                            <label for="precioM2" class="form-label">Precio de metro cuadrado</label>
+                            <input type="text" class="form-control" id="precioM2View">
                         </div>
                         <input type="hidden" id="idView">
                     </form>
@@ -123,6 +139,10 @@
         $('#descripcionView').val(propertyData.descripcion);
         $('#medidaView').val(propertyData.medida);
         $('#climaView').val(propertyData.clima);
+        $('#latitudView').val(propertyData.latitud);
+        $('#longitudView').val(propertyData.longitud);
+        $('#precioArrendamientoView').val(propertyData.precio_arriendo);
+        $('#precioM2View').val(propertyData.precio_metro_cuadrado);
     }
 
     // Función para obtener los datos del predio desde Firebase
@@ -178,7 +198,6 @@
                         $('#selectedOwnersView').append(ownerDiv);
 
                         // Extraer el departamento y municipio del predio
-                        const departamentoId = data.departamento[0];
                         const municipio = data.municipio;
 
                         // Agregar el nombre del propietario al select de propietarios

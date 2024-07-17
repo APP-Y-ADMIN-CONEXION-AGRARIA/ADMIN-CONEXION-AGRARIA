@@ -42,16 +42,35 @@
                             <input type="text" class="form-control" id="direccion">
                         </div>
                         <div class="mb-3">
+                            <label for="latitud" class="form-label">Latitud</label>
+                            <input type="text" class="form-control" id="latitud"
+                                onkeypress="validateCoordinatesInput(event)">
+                        </div>
+                        <div class="mb-3">
+                            <label for="longitud" class="form-label">Longitud</label>
+                            <input type="text" class="form-control" id="longitud"
+                                onkeypress="validateCoordinatesInput(event)">
+                        </div>
+                        <div class="mb-3">
                             <label for="descripcion" class="form-label">Descripción</label>
                             <input type="text" class="form-control" id="descripcion">
                         </div>
                         <div class="mb-3">
-                            <label for="medida" class="form-label">Medida</label>
-                            <input type="text" class="form-control" id="medida">
+                            <label for="medida" class="form-label">Medida (En metros cuadrados)</label>
+                            <input type="text" class="form-control" id="medida" oninput="formatNumber(this)">
                         </div>
                         <div class="mb-3">
                             <label for="clima" class="form-label">Clima</label>
                             <input type="text" class="form-control" id="clima">
+                        </div>
+                        <div class="mb-3">
+                            <label for="precioArrendamiento" class="form-label">Precio de arrendamiento (En COP)</label>
+                            <input type="text" class="form-control" id="precioArrendamiento"
+                                oninput="formatNumber(this)">
+                        </div>
+                        <div class="mb-3">
+                            <label for="precioM2" class="form-label">Precio de metro cuadrado (En COP)</label>
+                            <input type="text" class="form-control" id="precioM2" oninput="formatNumber(this)">
                         </div>
                         <input type="hidden" id="id">
                     </form>
@@ -90,23 +109,23 @@
                     <form id="formStep4">
                         <div class="mb-3">
                             <label for="file1" class="form-label">Imagen 1</label>
-                            <input type="file" class="form-control" id="file1">
+                            <input type="file" class="form-control" id="file1" onchange="validateImage(this)">
                         </div>
                         <div class="mb-3">
                             <label for="file2" class="form-label">Imagen 2</label>
-                            <input type="file" class="form-control" id="file2">
+                            <input type="file" class="form-control" id="file2" onchange="validateImage(this)">
                         </div>
                         <div class="mb-3">
                             <label for="file3" class="form-label">Imagen 3</label>
-                            <input type="file" class="form-control" id="file3">
+                            <input type="file" class="form-control" id="file3" onchange="validateImage(this)">
                         </div>
                         <div class="mb-3">
                             <label for="file4" class="form-label">Imagen 4</label>
-                            <input type="file" class="form-control" id="file4">
+                            <input type="file" class="form-control" id="file4" onchange="validateImage(this)">
                         </div>
                         <div class="mb-3">
                             <label for="file5" class="form-label">Imagen 5</label>
-                            <input type="file" class="form-control" id="file5">
+                            <input type="file" class="form-control" id="file5" onchange="validateImage(this)">
                         </div>
                     </form>
                 </div>
@@ -123,7 +142,32 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
 <script>
+    function validateImage(input) {
+        const file = input.files[0];
+        if (file) {
+            const fileSizeMB = file.size / (1024 * 1024); // Tamaño en MB
+            if (fileSizeMB >= 1.5) {
+                alert('Estás intentando subir un archivo con un peso mayor a 1,5 MB, por favor selecciona otra imagen.');
+                input.value = ''; // Reiniciar el input
+            }
+        }
+    }
 
+    function validateCoordinatesInput(event) {
+        const char = String.fromCharCode(event.which);
+        const regex = /[0-9\.\-]/;
+
+        if (!regex.test(char)) {
+            event.preventDefault();
+        }
+    }
+
+    function formatNumber(input) {
+        let value = input.value;
+        value = value.replace(/\D/g, ''); // Eliminar todo lo que no sea dígito
+        value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Agregar puntos de separación de miles
+        input.value = value;
+    }
 
     /** Función para obtener y mostrar usuarios en el primer select del modal */
     async function populateOwnersSelect() {
@@ -149,7 +193,7 @@
 
             // Llenar el select con los usuarios obtenidos
             for (const userId in data) {
-                const userName = data[userId].nombre;
+                const userName = data[userId].numero_documento;
                 const option = document.createElement('option');
                 option.value = userId;
                 option.textContent = userName;
@@ -163,6 +207,13 @@
     // Llamar a la función para poblar el select al cargar la página
     document.addEventListener('DOMContentLoaded', () => {
         populateOwnersSelect();
+
+        document.getElementById('precioArrendamiento').addEventListener('input', (event) => {
+            formatNumber(event.target);
+        });
+        document.getElementById('precioM2').addEventListener('input', (event) => {
+            formatNumber(event.target);
+        });
     });
 
     /** Función para poblar select de departamentos */
@@ -277,11 +328,23 @@
 
         nextBtn.addEventListener('click', () => {
             if (currentStep === 0) {
-                submitStep1Data();
+                if (validateStep1()) {
+                    submitStep1Data();
+                } else {
+                    alert('Por favor, verifica que todos los campos estén llenos.');
+                }
             } else if (currentStep === 1) {
-                submitStep2Data();
+                if (validateStep2()) {
+                    submitStep2Data();
+                } else {
+                    alert('Selecciona un propietario para este predio.');
+                }
             } else if (currentStep === 2) {
-                submitStep3Data();
+                if (validateStep3()) {
+                    submitStep3Data();
+                } else {
+                    alert('Por favor, selecciona un departamento y municipio para este predio.');
+                }
             } else if (currentStep === 3) {
                 submitStep4Data();
             } else {
@@ -291,14 +354,44 @@
             }
         });
 
+        function validateStep1() {
+            const nombre = document.getElementById('nombre').value.trim();
+            const direccion = document.getElementById('direccion').value.trim();
+            const latitud = document.getElementById('latitud').value.trim();
+            const longitud = document.getElementById('longitud').value.trim();
+            const descripcion = document.getElementById('descripcion').value.trim();
+            const medida = document.getElementById('medida').value.trim();
+            const clima = document.getElementById('clima').value.trim();
+            const precioArrendamiento = document.getElementById('precioArrendamiento').value.trim();
+            const precioM2 = document.getElementById('precioM2').value.trim();
+
+            return nombre && direccion && descripcion && medida && clima && precioArrendamiento && precioM2;
+        }
+
+        function validateStep2() {
+            const selectedUsers = Array.from(document.querySelectorAll('#selectedOwners .selected-owner'));
+            return selectedUsers.length > 0;
+        }
+
+        function validateStep3() {
+            const departamentoId = document.getElementById('select2').value;
+            const municipioName = document.getElementById('select3').value;
+
+            return departamentoId && municipioName;
+        }
+
         function submitStep1Data() {
             const data = {
                 id: document.getElementById('id').value || null,
                 nombre: document.getElementById('nombre').value || null,
                 direccion: document.getElementById('direccion').value || null,
+                latitud: parseFloat(document.getElementById('latitud').value, 10) || null,
+                longitud: parseFloat(document.getElementById('longitud').value, 10) || null,
                 descripcion: document.getElementById('descripcion').value || null,
-                medida: document.getElementById('medida').value || null,
+                medida: document.getElementById('medida').value + " m²" || null,
                 clima: document.getElementById('clima').value || null,
+                precio_arriendo: document.getElementById('precioArrendamiento').value + " COP" || null,
+                precio_metro_cuadrado: document.getElementById('precioM2').value + " COP/m²" || null,
                 departamento: null,
                 municipio: null,
                 imagenes: [],

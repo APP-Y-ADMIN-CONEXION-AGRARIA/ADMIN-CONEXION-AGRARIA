@@ -54,20 +54,6 @@ class firebaseTerrenos {
     }
     
     this.objTbody.innerHTML = rowTable;
-    this.addEventListeners();
-  }
-
-  addEventListeners() {
-    const viewButtons = document.querySelectorAll(".btn-view");
-
-    viewButtons.forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const id = event.target.getAttribute("data-id"); // Obtener data-id del botón clickeado
-        viewUser(id);
-      });
-    });
-
-    // También podrías añadir aquí los listeners para editar y eliminar si es necesario.
   }
 
   async setDeleteUser(id) {

@@ -31,6 +31,14 @@
                             <label for="climaEditModal" class="form-label">Clima</label>
                             <input type="text" class="form-control" id="climaEditModal">
                         </div>
+                        <div class="mb-3">
+                            <label for="precioArrendamientoEdit" class="form-label">Precio de arrendamiento</label>
+                            <input type="text" class="form-control" id="precioArrendamientoEdit">
+                        </div>
+                        <div class="mb-3">
+                            <label for="precioM2Edit" class="form-label">Precio de metro cuadrado</label>
+                            <input type="text" class="form-control" id="precioM2Edit">
+                        </div>
                         <input type="hidden" id="idEditModal">
                     </form>
                 </div>
@@ -271,6 +279,8 @@
                 $('#descripcionEditModal').val(data.descripcion);
                 $('#medidaEditModal').val(data.medida);
                 $('#climaEditModal').val(data.clima);
+                $('#precioArrendamientoEdit').val(data.precio_arriendo);
+                $('#precioM2Edit').val(data.precio_metro_cuadrado);
                 $('#idEditModal').val(propertyId);
                 $('#input1EditModal').val(data.imagenes[0]);
                 $('#input2EditModal').val(data.imagenes[1]);
@@ -309,8 +319,8 @@
 
             for (const userId in userData) {
                 if (userData.hasOwnProperty(userId)) {
-                    const userName = userData[userId].nombre;
-                    selectUsers.append(`<option value="${userId}">${userName}</option>`);
+                    const userIdentification = userData[userId].numero_documento;
+                    selectUsers.append(`<option value="${userId}">${userIdentification}</option>`);
                 }
             }
         } catch (error) {
@@ -339,7 +349,7 @@
                 if (userData) {
                     const ownerDiv = $(`
                     <div class="selected-owner" id="${userId}">
-                        ${userData.nombre}
+                        ${userData.numero_documento}
                         <button type="button" class="btn btn-danger btn-sm" onclick="removeEditOwner('${userId}')">
                             <i class="fas fa-trash-alt"></i>
                         </button>
@@ -496,6 +506,8 @@
                 descripcion: $('#descripcionEditModal').val(),
                 medida: $('#medidaEditModal').val(),
                 clima: $('#climaEditModal').val(),
+                precio_arriendo: $('#precioArrendamientoEdit').val(),
+                precio_metro_cuadrado: $('#precioM2Edit').val(),
                 imagenes: [
                     $('#input1EditModal').val(),
                     $('#input2EditModal').val(),

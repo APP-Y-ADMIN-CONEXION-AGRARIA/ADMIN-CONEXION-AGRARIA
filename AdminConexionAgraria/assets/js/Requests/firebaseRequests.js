@@ -4,7 +4,7 @@ const firebaseGame = new firebaseSolicitud('tbody');
 const formRequest = document.getElementById('formRequest'); // Corregido el nombre del formulario
 const btnSubmit = document.getElementById('btnSubmit');
 const myModal = new bootstrap.Modal(document.getElementById("modalApp"), {});
-const textConfirm = "Press a button to Delete!\nAccept or Cancel.";
+const textConfirm = "¿Estas seguro de esto? No podras deshacer esta acción";
 var getIdUser = "";
 var validate = true;
 
