@@ -56,6 +56,25 @@
                             <input type="text" class="form-control" id="descripcion">
                         </div>
                         <div class="mb-3">
+                            <label for="fecha_creacion" class="form-label">Fecha de creación del predio</label>
+                            <input type="text" class="form-control" id="fecha_creacion" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estadoPredio" class="form-label">Seleccione el estado del predio</label>
+                            <select class="form-select" id="estadoPredio">
+                                <option value="">Estados del predio...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="arrendamientoPredio" class="form-label">Seleccione el estado de arrendamiento
+                                del predio</label>
+                            <select class="form-select" id="arrendamientoPredio">
+                                <option value="">Estados de arrendamiento...</option>
+                                <option value="arrendado">Arrendado</option>
+                                <option value="no_arrendado">No arrendado</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label for="medida" class="form-label">Medida (En metros cuadrados)</label>
                             <input type="text" class="form-control" id="medida" oninput="formatNumber(this)">
                         </div>
@@ -142,6 +161,63 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Obtener referencia al campo del nombre
+        const nombreInput = document.getElementById('nombre');
+
+        // Agregar evento de escucha para validar longitud al cambiar el valor
+        nombreInput.addEventListener('input', () => {
+            const nombre = nombreInput.value.trim();
+            if (nombre.length > 25) {
+                alert('Introduce un nombre válido con un límite de 25 caracteres.');
+                nombreInput.value = direccion.slice(0, 25); // Recortar a 100 caracteres
+            }
+        });
+
+        // Obtener referencia al campo de dirección
+        const direccionInput = document.getElementById('direccion');
+
+        // Agregar evento de escucha para validar longitud al cambiar el valor
+        direccionInput.addEventListener('input', () => {
+            const direccion = direccionInput.value.trim();
+            if (direccion.length > 100) {
+                alert('Introduce una dirección válida con un límite de 100 caracteres.');
+                direccionInput.value = direccion.slice(0, 100); // Recortar a 100 caracteres
+            }
+        });
+
+        // Obtener referencia al campo de clima
+        const climaInput = document.getElementById('clima');
+
+        // Agregar evento de escucha para validar longitud al cambiar el valor
+        climaInput.addEventListener('input', () => {
+            const clima = climaInput.value.trim();
+            if (clima.length > 15) {
+                alert('Introduce un clima con un límite de 15 caracteres.');
+                climaInput.value = clima.slice(0, 15); // Recortar a 15 caracteres
+            }
+        });
+
+        // Obtener referencia al campo de descripcion
+        const descripcionInput = document.getElementById('descripcion');
+
+        // Agregar evento de escucha para validar longitud al cambiar el valor
+        descripcionInput.addEventListener('input', () => {
+            const descripcion = descripcionInput.value.trim();
+            if (descripcion.length > 255) {
+                alert('Introduce una descripcion con un límite de 255 caracteres.');
+                descripcionInput.value = descripcion.slice(0, 255); // Recortar a 255 caracteres
+            }
+        });
+
+    });
+
+
+    document.getElementById('nombre').addEventListener('input', function (e) {
+        this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+    });
+
     function validateImage(input) {
         const file = input.files[0];
         if (file) {
@@ -214,7 +290,37 @@
         document.getElementById('precioM2').addEventListener('input', (event) => {
             formatNumber(event.target);
         });
+
     });
+
+    /** Función para poblar select de estatus de predio */
+    async function populateStatusSelect() {
+        try {
+            const response = await fetch('https://conexion-agraria-default-rtdb.firebaseio.com/Api/PropertiesStatus.json');
+            if (!response.ok) {
+                throw new Error('Error al obtener los estados de predio');
+            }
+            const data = await response.json();
+            const selectStatus = document.getElementById('estadoPredio');
+
+            // Limpiar opciones existentes
+            selectStatus.innerHTML = '<option value="">Estatus de los predios...</option>';
+
+            // Llenar el select con los estatus obtenidos
+            for (const key in data) {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = data[key].estado_predio;
+                selectStatus.appendChild(option);
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Llamar a la función para poblar el select cuando el documento esté listo
+    document.addEventListener('DOMContentLoaded', populateStatusSelect);
 
     /** Función para poblar select de departamentos */
     async function populateDepartmentsSelect() {
@@ -380,6 +486,23 @@
             return departamentoId && municipioName;
         }
 
+        function setFechaCreacion() {
+            const fechaCreacionInput = document.getElementById('fecha_creacion');
+            const ahora = new Date();
+            const dia = ahora.getDate().toString().padStart(2, '0');
+            const mes = (ahora.getMonth() + 1).toString().padStart(2, '0'); // Los meses en JavaScript son 0-11
+            const año = ahora.getFullYear();
+            const horas = ahora.getHours().toString().padStart(2, '0');
+            const minutos = ahora.getMinutes().toString().padStart(2, '0');
+            const segundos = ahora.getSeconds().toString().padStart(2, '0');
+
+            const fechaYHora = `${dia}/${mes}/${año} ${horas}:${minutos}:${segundos}`;
+            fechaCreacionInput.value = fechaYHora;
+        }
+
+        // Llamamos a la función para establecer la fecha y la hora actual
+        setFechaCreacion();
+
         function submitStep1Data() {
             const data = {
                 id: document.getElementById('id').value || null,
@@ -392,6 +515,9 @@
                 clima: document.getElementById('clima').value || null,
                 precio_arriendo: document.getElementById('precioArrendamiento').value + " COP" || null,
                 precio_metro_cuadrado: document.getElementById('precioM2').value + " COP/m²" || null,
+                fecha_creacion: document.getElementById('fecha_creacion').value || null,
+                estado: document.getElementById('arrendamientoPredio').value,
+                estado_predio_id: document.getElementById('estadoPredio').value,
                 departamento: null,
                 municipio: null,
                 imagenes: [],

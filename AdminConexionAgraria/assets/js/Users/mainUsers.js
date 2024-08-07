@@ -158,4 +158,43 @@ class firebaseUsers {
         console.error(error);
       });
   }
+
+  async getRoles() {
+    return this.fetchWithToken(
+      "https://conexion-agraria-default-rtdb.firebaseio.com/Api/Role.json"
+    )
+      .then((res) => {
+        if (!res.ok) {
+          console.log("Failed to fetch roles data");
+          throw new Error("Failed to fetch roles data");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        this.populateRoleSelect(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  populateRoleSelect(data) {
+    const roleSelect = document.getElementById("role_id");
+    roleSelect.innerHTML = '<option value="">Seleccione un rol</option>'; // Limpiar select
+    for (const role in data) {
+      const option = document.createElement("option");
+      option.value = role;
+      option.text = data[role].nombre_rol;
+      roleSelect.appendChild(option);
+    }
+
+    // Preseleccionar el rol si se está editando un usuario
+    const currentUserRole = document.getElementById("id").value;
+    if (currentUserRole) {
+      const dataUser = firebaseGame.getDataUser(currentUserRole);
+      dataUser.then((data) => {
+        roleSelect.value = data.role_id || "";
+      });
+    }
+  }
 }

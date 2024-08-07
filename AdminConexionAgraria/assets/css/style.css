@@ -204,8 +204,8 @@ html[data-menu-color="brand"] {
   background-color: #c0392b; /* Color de fondo más oscuro al pasar el ratón */
 }
 
-#tbodyModal{
-    text-align: left!important;
+#tbodyModal {
+  text-align: left !important;
 }
 
 .selected-owner {

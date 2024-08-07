@@ -24,6 +24,26 @@
                             <input type="text" class="form-control" id="descripcionEditModal">
                         </div>
                         <div class="mb-3">
+                            <label for="fecha_creacion_edit" class="form-label">Fecha de creación del predio</label>
+                            <input type="text" class="form-control" id="fecha_creacion_edit" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estadoPredioEdit" class="form-label">Seleccione el estado del predio</label>
+                            <select class="form-select" id="estadoPredioEdit">
+                                <option value="">Estados del predio...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="arrendamientoPredioEdit" class="form-label">Seleccione el estado de
+                                arrendamiento
+                                del predio</label>
+                            <select class="form-select" id="arrendamientoPredioEdit">
+                                <option value="">Estados de arrendamiento...</option>
+                                <option value="arrendado">Arrendado</option>
+                                <option value="no_arrendado">No arrendado</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label for="medidaEditModal" class="form-label">Medida</label>
                             <input type="text" class="form-control" id="medidaEditModal">
                         </div>
@@ -144,6 +164,95 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
 <script>
+    /** Función para poblar select de estatus de predio */
+    async function populateStatusSelectEdit(selectedValue = "") {
+        try {
+            const response = await fetch('https://conexion-agraria-default-rtdb.firebaseio.com/Api/PropertiesStatus.json');
+            if (!response.ok) {
+                throw new Error('Error al obtener los estados de predio');
+            }
+            const data = await response.json();
+            const selectStatus = document.getElementById('estadoPredioEdit');
+
+            // Limpiar opciones existentes
+            selectStatus.innerHTML = '<option value="">Estatus de los predios...</option>';
+
+            // Llenar el select con los estatus obtenidos
+            for (const key in data) {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = data[key].estado_predio;
+                selectStatus.appendChild(option);
+            }
+
+            // Preseleccionar el valor si se proporciona
+            if (selectedValue) {
+                selectStatus.value = selectedValue;
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Llamar a la función para poblar el select cuando el documento esté listo
+    document.addEventListener('DOMContentLoaded', () => {
+        populateStatusSelectEdit();
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Obtener referencia al campo del nombre
+        const nombreInput = document.getElementById('nombreEditModal');
+
+        // Agregar evento de escucha para validar longitud al cambiar el valor
+        nombreInput.addEventListener('input', () => {
+            const nombre = nombreInput.value.trim();
+            if (nombre.length > 25) {
+                alert('Introduce un nombre válido con un límite de 25 caracteres.');
+                nombreInput.value = direccion.slice(0, 25); // Recortar a 100 caracteres
+            }
+        });
+
+        // Obtener referencia al campo de dirección
+        const direccionInput = document.getElementById('direccionEditModal');
+
+        // Agregar evento de escucha para validar longitud al cambiar el valor
+        direccionInput.addEventListener('input', () => {
+            const direccion = direccionInput.value.trim();
+            if (direccion.length > 100) {
+                alert('Introduce una dirección válida con un límite de 100 caracteres.');
+                direccionInput.value = direccion.slice(0, 100); // Recortar a 100 caracteres
+            }
+        });
+
+        // Obtener referencia al campo de clima
+        const climaInput = document.getElementById('climaEditModal');
+
+        // Agregar evento de escucha para validar longitud al cambiar el valor
+        climaInput.addEventListener('input', () => {
+            const clima = climaInput.value.trim();
+            if (clima.length > 15) {
+                alert('Introduce un clima con un límite de 15 caracteres.');
+                climaInput.value = clima.slice(0, 15); // Recortar a 15 caracteres
+            }
+        });
+
+        // Obtener referencia al campo de descripcion
+        const descripcionInput = document.getElementById('descripcionEditModal');
+
+        // Agregar evento de escucha para validar longitud al cambiar el valor
+        descripcionInput.addEventListener('input', () => {
+            const descripcion = descripcionInput.value.trim();
+            if (descripcion.length > 255) {
+                alert('Introduce una descripcion con un límite de 255 caracteres.');
+                descripcionInput.value = descripcion.slice(0, 255); // Recortar a 255 caracteres
+            }
+        });
+
+    });
+
 
     // Función para mostrar solo el primer paso y ocultar los demás
     function resetModalSteps() {
@@ -158,7 +267,15 @@
     // Evento para cuando el modal de edición se muestra
     $('#modalEdit').on('shown.bs.modal', function () {
         resetModalSteps();
+        const propertyId = $('#idEditModal').val();
+        if (propertyId) {
+            getEditPropertyData(propertyId).then(() => {
+                // Esperar a que se complete la población del select de estado del predio
+                populateStatusSelectEdit($('#estadoPredioEdit').val());
+            });
+        }
     });
+
 
     $(document).ready(function () {
         $('#modalEdit').on('hidden.bs.modal', function () {
@@ -277,6 +394,7 @@
                 $('#nombreEditModal').val(data.nombre);
                 $('#direccionEditModal').val(data.direccion);
                 $('#descripcionEditModal').val(data.descripcion);
+                $('#fecha_creacion_edit').val(data.fecha_creacion);
                 $('#medidaEditModal').val(data.medida);
                 $('#climaEditModal').val(data.clima);
                 $('#precioArrendamientoEdit').val(data.precio_arriendo);
@@ -287,6 +405,13 @@
                 $('#input3EditModal').val(data.imagenes[2]);
                 $('#input4EditModal').val(data.imagenes[3]);
                 $('#input5EditModal').val(data.imagenes[4]);
+
+                // Preseleccionar el valor del estado del predio
+                $('#estadoPredioEdit').val(data.estado_predio_id);
+
+                // Preseleccionar el valor del estado de arrendamiento
+                $('#arrendamientoPredioEdit').val(data.estado);
+
                 await fetchEditOwnersData(data.usuarios);
                 await loadDepartmentsAndMunicipalities(data.departamento[0], data.municipio);
                 await loadUsersIntoSelect();
@@ -504,6 +629,8 @@
                 nombre: $('#nombreEditModal').val(),
                 direccion: $('#direccionEditModal').val(),
                 descripcion: $('#descripcionEditModal').val(),
+                estado: $('#arrendamientoPredioEdit').val(),
+                estado_predio_id: $('#estadoPredioEdit').val(),
                 medida: $('#medidaEditModal').val(),
                 clima: $('#climaEditModal').val(),
                 precio_arriendo: $('#precioArrendamientoEdit').val(),

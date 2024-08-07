@@ -77,15 +77,21 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="numero_documento" placeholder="No. Documento"
                             pattern="\d*">
-                        <label for="direccion">NO. DOCUMENTO</label>
+                        <label for="numero_documento">NO. DOCUMENTO</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="telefono" placeholder="Telefono" pattern="\d*">
-                        <label for="medida">TELEFONO</label>
+                        <label for="telefono">TELEFONO</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="correo" placeholder="Correo">
-                        <label for="img">CORREO</label>
+                        <label for="correo">CORREO</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select style="height:61px!important;" class="form-control" id="role_id" placeholder="Rol">
+                            <option value="">Seleccione un rol</option>
+                        </select>
+                        <label for="role">ROL</label>
                     </div>
                 </form>
                 <!-- End Form -->
@@ -120,4 +126,7 @@
         this.value = this.value.replace(/\D/g, '');
     });
 
+    document.getElementById('nombre').addEventListener('input', function (e) {
+        this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+    });
 </script>
