@@ -2,6 +2,14 @@ class firebaseUsers {
   constructor(idTbody) {
     this.objTbody = document.getElementById(idTbody);
     this.URL = "https://conexion-agraria-default-rtdb.firebaseio.com/Api/Users";
+    this.firebaseToken = localStorage.getItem("firebaseToken"); // Obtener el token de localStorage
+
+    if (!this.firebaseToken) {
+      alert("No estás autorizado. Por favor, inicia sesión.");
+      window.location.href = "?c=login&m=login";
+    } else {
+      document.body.classList.remove("d-none"); // Mostrar el contenido si hay token
+    }
   }
 
   async fetchWithToken(url, options = {}) {
@@ -21,10 +29,6 @@ class firebaseUsers {
 
   async getDataUsers() {
     const firebaseToken = localStorage.getItem("firebaseToken");
-    if (!firebaseToken) {
-      alert("No estas autorizado. Por favor, inicia sesión.");
-      window.location.href = "?c=login&m=login";
-    }
 
     return this.fetchWithToken(this.URL + ".json")
       .then((res) => {
@@ -189,7 +193,7 @@ class firebaseUsers {
     }
 
     // Preseleccionar el rol si se está editando un usuario
-    const currentUserRole = document.getElementById("id").value;
+    const currentUserRole = document.getElementById("role_id").value;
     if (currentUserRole) {
       const dataUser = firebaseGame.getDataUser(currentUserRole);
       dataUser.then((data) => {

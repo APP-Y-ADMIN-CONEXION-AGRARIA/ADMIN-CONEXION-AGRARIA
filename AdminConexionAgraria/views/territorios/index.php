@@ -1,4 +1,4 @@
-<body>
+<body class="d-none">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -8,7 +8,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <form class="d-flex">
-                    <button class="btn btn-outline-success" type="button" onclick="createUser();">Crear un nuevo predio</button>
+                    <button class="btn btn-outline-success" type="button" id="botonCrear" onclick="createUser();">Crear
+                        un nuevo predio</button>
                 </form>
             </div>
         </div>
@@ -52,17 +53,17 @@
 
     <!-- Modal Create -->
     <?php
-        require_once ('views/territorios/modals/modalCreate.php');
+    require_once('views/territorios/modals/modalCreate.php');
     ?>
 
     <!-- Modal View -->
     <?php
-        require_once ('views/territorios/modals/modalView.php');
+    require_once('views/territorios/modals/modalView.php');
     ?>
 
     <!-- Modal Edit -->
     <?php
-        require_once ('views/territorios/modals/modalEdit.php');
+    require_once('views/territorios/modals/modalEdit.php');
     ?>
 
 

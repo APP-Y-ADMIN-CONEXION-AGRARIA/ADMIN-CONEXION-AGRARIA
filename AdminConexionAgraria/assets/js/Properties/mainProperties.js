@@ -4,16 +4,21 @@ class firebaseTerrenos {
     this.URL =
       "https://conexion-agraria-default-rtdb.firebaseio.com/Api/Properties";
     this.firebaseToken = localStorage.getItem("firebaseToken"); // Obtener el token de localStorage
+
+    if (!this.firebaseToken) {
+      alert("No estás autorizado. Por favor, inicia sesión.");
+      window.location.href = "?c=login&m=login";
+    } else {
+      document.body.classList.remove("d-none"); // Mostrar el contenido si hay token
+    }
   }
 
   async getDataUsers() {
-    const firebaseToken = localStorage.getItem("firebaseToken");
-    if (!firebaseToken) {
-      alert("No estás autorizado. Por favor, inicia sesión.");
-      window.location.href = "?c=login&m=login";
-    }
-
-    return fetch(this.URL + ".json")
+    return fetch(this.URL + ".json", {
+      headers: {
+        Authorization: `Bearer ${this.firebaseToken}`, // Agregar el token a los headers
+      },
+    })
       .then((res) =>
         res.ok ? res.json() : Promise.reject("Error al obtener datos")
       )
@@ -39,7 +44,7 @@ class firebaseTerrenos {
             <i class="bi bi-trash-fill"></i>
           </button>
         </div>`;
-      
+
       rowTable += `
         <tr>
           <td>${contRow}</td>
@@ -49,10 +54,10 @@ class firebaseTerrenos {
           <td>${data[user].clima}</td>
           <td class='text-center'>${btnActions}</td>
         </tr>`;
-      
+
       contRow++;
     }
-    
+
     this.objTbody.innerHTML = rowTable;
   }
 
@@ -64,7 +69,7 @@ class firebaseTerrenos {
       },
     })
       .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error al eliminar usuario")
+        res.ok ? res.json() : Promise.reject("Error al eliminar predio")
       )
       .then(() => this.getDataUsers())
       .catch((error) => console.error(error));

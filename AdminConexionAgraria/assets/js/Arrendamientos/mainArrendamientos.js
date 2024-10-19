@@ -7,6 +7,14 @@ class firebaseUsers {
       "https://conexion-agraria-default-rtdb.firebaseio.com/Api/leases";
     this.propertiesURL =
       "https://conexion-agraria-default-rtdb.firebaseio.com/Api/Properties.json";
+    this.firebaseToken = localStorage.getItem("firebaseToken"); // Obtener el token de localStorage
+
+    if (!this.firebaseToken) {
+      alert("No estás autorizado. Por favor, inicia sesión.");
+      window.location.href = "?c=login&m=login";
+    } else {
+      document.body.classList.remove("d-none"); // Mostrar el contenido si hay token
+    }
   }
 
   async fetchWithToken(url, options = {}) {

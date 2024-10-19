@@ -28,7 +28,7 @@
                 <div>
                     <img src="assets\images\icono.png" alt="">
                 </div>
-                <h3 class="text-center mt-1 textorecuperacion">RECOVER PASSWORD</h3>
+                <h3 class="text-center mt-1 textorecuperacion">RECUPERAR CONTRASEÑA</h3>
                 <hr>
 
                 <form id="formPasswordRecover" class="mt-5 p-2 mb-5 ">

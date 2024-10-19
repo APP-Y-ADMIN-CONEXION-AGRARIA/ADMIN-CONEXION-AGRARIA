@@ -125,7 +125,7 @@ if (objFormLogin) {
           // Aquí puedes almacenar el token de Firebase en localStorage
           localStorage.setItem("firebaseToken", firebaseToken);
 
-          window.location.href= "?c=users&m=index";
+          window.location.href = "?c=users&m=index";
         });
       } catch (error) {
         const errorCode = error.code;

@@ -1,1 +1,1 @@
-import "../user/userController.js";
+import "../User/userController.js";

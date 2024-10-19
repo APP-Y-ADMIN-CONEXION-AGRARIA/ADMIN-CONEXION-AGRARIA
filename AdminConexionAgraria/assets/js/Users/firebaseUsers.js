@@ -16,48 +16,52 @@ function getDataUser() {
 }
 
 /** Function show user */
-function showUser(id) {
+async function showUser(id) {
   cleanForm();
   disableForm();
-  const dataUser = firebaseGame.getDataUser(id);
-  dataUser.then((data) => {
-    if (data) {
-      setDataForm(data);
-    }
-  });
+
+  await firebaseGame.getRoles(); // Obtener roles antes de cargar los datos del usuario
+
+  const data = await firebaseGame.getDataUser(id);
+  if (data) {
+    setDataForm(data);
+  }
+
   btnSubmit.disabled = true;
   selectRole.disabled = true;
   showModal();
-  firebaseGame.getRoles(); // Obtener roles cuando se muestra el modal
 }
 
 /** Function edit user */
-function editUser(id) {
+async function editUser(id) {
   validate = false;
   cleanForm();
   enableForm();
   getIdUser = id;
-  const dataUser = firebaseGame.getDataUser(id);
-  dataUser.then((data) => {
-    if (data) {
-      setDataForm(data);
-    }
-  });
+
+  await firebaseGame.getRoles(); // Obtener roles antes de cargar los datos del usuario
+
+  const data = await firebaseGame.getDataUser(id);
+  if (data) {
+    setDataForm(data);
+  }
+
   btnSubmit.disabled = false;
   selectRole.disabled = false;
   showModal();
-  firebaseGame.getRoles(); // Obtener roles cuando se edita un usuario
 }
 
 /** Function create user */
-function createUser() {
+async function createUser() {
   validate = true;
   cleanForm();
   enableForm();
+
+  await firebaseGame.getRoles(); // Obtener roles antes de mostrar el modal
+
   btnSubmit.disabled = false;
   selectRole.disabled = false;
   showModal();
-  firebaseGame.getRoles(); // Obtener roles cuando se crea un nuevo usuario
 }
 
 /** Function delete user */
